@@ -4,7 +4,7 @@ import com.example.newsapp.api.NewsService
 
 class NewsRepository(private val newsService: NewsService):BaseRepository() {
 
-    suspend fun getNewsByQuery(city: String) = safeApiCall{
-        newsService.getNewsByQuery(city)
+    suspend fun getNewsByTopic(topic: String,sortBy: String,fromDate: String) = safeApiCall{
+        newsService.getNewsByTopic(topic,sortBy,fromDate)
     }
 }

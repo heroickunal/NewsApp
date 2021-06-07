@@ -2,12 +2,15 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
+        // Enabling multidex support.
+        multiDexEnabled true
         applicationId "com.example.newsapp"
         minSdkVersion 16
         targetSdkVersion 30
@@ -30,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding = true
+    }
+
 }
 
 dependencies {
@@ -80,4 +87,13 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+
+    //shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Glide
+    def glide_version = "4.11.0"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

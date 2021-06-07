@@ -19,7 +19,7 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 
-private const val baseUrl = "https://newsapi.org/v2"
+private const val baseUrl = "https://newsapi.org/v2/"
 
 val networkModule = module {
 

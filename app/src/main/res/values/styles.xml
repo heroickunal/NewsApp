@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ActionBarTheme" parent="Widget.AppCompat.Toolbar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+    </style>
+
+    <style name="DefaultTextStyle">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="TextStyle20" parent="DefaultTextStyle">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextStyle16" parent="DefaultTextStyle">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextStyle16Black" parent="DefaultTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle16White" parent="DefaultTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextStyle12" parent="DefaultTextStyle">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="SimpleButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="rippleColor">@color/colorPrimary</item>
+    </style>
+
+    <!-- Material Button design widget styles -->
+    <style name="PrimaryButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_fragment"
+    app:startDestination="@id/newsCardFragment">
+
+    <fragment
+        android:id="@+id/newsCardFragment"
+        android:name="com.example.newsapp.ui.news.NewsCardFragment"
+        android:label="NewsCardFragment" >
+        <action
+            android:id="@+id/action_newsCardFragment_to_newsWebViewFragment"
+            app:destination="@id/newsWebViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsWebViewFragment"
+        android:name="com.example.newsapp.ui.news.NewsWebViewFragment"
+        android:label="NewsWebViewFragment" />
+</navigation>

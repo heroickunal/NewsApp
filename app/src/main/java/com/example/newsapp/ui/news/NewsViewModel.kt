@@ -1,4 +1,4 @@
-package com.example.newsapp.ui
+package com.example.newsapp.ui.news
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,11 +16,11 @@ class NewsViewModel(private val newsRepo: NewsRepository): ViewModel(){
     private val _GetNewsByTopicResponse = MutableLiveData<ResponseHandler<GetNewsResponse>>()
     val getNewsByTopicResponse: LiveData<ResponseHandler<GetNewsResponse>> = _GetNewsByTopicResponse
 
-    fun getNewsByQuery(topic:String) {
+    fun getNewsByTopic(topic: String,sortBy: String,fromDate: String) {
         Timber.d("topic $topic")
         _GetNewsByTopicResponse.postValue(ResponseHandler.Loading(null))
         viewModelScope.launch(Dispatchers.IO) {
-            _GetNewsByTopicResponse.postValue(newsRepo.getNewsByQuery(topic))
+            _GetNewsByTopicResponse.postValue(newsRepo.getNewsByTopic(topic,sortBy,fromDate))
         }
     }
 
