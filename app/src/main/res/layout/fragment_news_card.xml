@@ -25,13 +25,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shimmer_layout_news" />
 
+        <ImageView
+            android:id="@+id/iv_search_by_topic"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_search_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <!--Shimmer layout-->
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_layout_news"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:onClick="@{()->viewModel.testing()"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

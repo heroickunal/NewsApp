@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">News App</string>
+    <string name="please_enter_the_topic">Please enter the topic</string>
 </resources>

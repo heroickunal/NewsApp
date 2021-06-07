@@ -5,6 +5,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.request.RequestOptions
 import com.example.newsapp.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Utils {
 
@@ -31,5 +33,10 @@ object Utils {
             .placeholder(getCustomProgressBar(context, fragmentActivity))
             .error(R.mipmap.ic_launcher_foreground)
         return options
+    }
+
+    fun getCurrentDate():String{
+        val sdf = SimpleDateFormat("yyyy-mm-dd")
+        return sdf.format(Date())
     }
 }

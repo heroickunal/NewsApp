@@ -13,13 +13,10 @@ import timber.log.Timber
 
 class NewsViewModel(private val newsRepo: NewsRepository): ViewModel(){
 
+
+
     private val _GetNewsByTopicResponse = MutableLiveData<ResponseHandler<GetNewsResponse>>()
     val getNewsByTopicResponse: LiveData<ResponseHandler<GetNewsResponse>> = _GetNewsByTopicResponse
-
-    fun testing()
-    {
-
-    }
 
     fun getNewsByTopic(topic: String,sortBy: String,fromDate: String) {
         Timber.d("topic $topic")

@@ -1,16 +1,18 @@
 package com.example.newsapp.ui.news
 
+import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
 import com.example.newsapp.model.Article
 import com.example.newsapp.ui.news.adapter.NewsItem
 import com.example.newsapp.util.ResponseHandler
+import com.example.newsapp.util.Utils.getCurrentDate
 import com.example.newsapp.util.showToast
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_news_card.*
@@ -33,11 +35,17 @@ class NewsCardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        clickListener()
         viewModelWorks()
     }
 
-    private fun viewModelWorks() {/*
-        viewModel.getNewsByTopic("Tesla","publishedAt","2021-06-06")*/
+    private fun clickListener() {
+        iv_search_by_topic.setOnClickListener {
+            searchByTopicDialog()
+        }
+    }
+
+    private fun viewModelWorks() {
         viewModel.getNewsByTopicResponse.observe(requireActivity(), { response ->
             when (response) {
                 is ResponseHandler.Success -> {
@@ -73,6 +81,9 @@ class NewsCardFragment : Fragment() {
                 }
                 is ResponseHandler.Failure -> {
                     Timber.d("response ${response}")
+                    response.errorMessage?.let{errormsg->
+                        requireActivity().showToast(errormsg)
+                    }
                     shimmer_layout_news.visibility = View.GONE
                 }
             }
@@ -85,5 +96,35 @@ class NewsCardFragment : Fragment() {
             list.add(NewsItem(item, requireActivity(), requireContext()))
         }
         return list.toMutableList()
+    }
+
+    private fun searchByTopicDialog() {
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_search)
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.setCancelable(true)
+
+        val topicName = dialog.findViewById(R.id.et_topic_name) as TextInputEditText
+        val btnSearch = dialog.findViewById(R.id.btn_search) as MaterialButton
+
+        btnSearch.setOnClickListener {
+            if(topicName.text.toString().isNotEmpty()) {
+                viewModel.getNewsByTopic(topicName.text.toString(), "publishedAt", getCurrentDate())
+                dialog.dismiss()
+            }
+            else
+            {
+                requireActivity().showToast(getString(R.string.please_enter_the_topic))
+            }
+        }
+
+        requireActivity().resources?.let {
+            val displayMetrics = it.displayMetrics
+            val dialogWidth = (displayMetrics.widthPixels * 0.85).toInt()
+            val dialogHeight = WindowManager.LayoutParams.WRAP_CONTENT
+            dialog.window?.setLayout(dialogWidth, dialogHeight)
+            dialog.show()
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.example.newsapp.ui.news
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.newsapp.R
+import com.example.newsapp.util.Utils.getCurrentDate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsActivity : AppCompatActivity() {
@@ -13,6 +14,6 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
 
-        viewModel.getNewsByTopic("Tesla","publishedAt","2021-06-06")
+        viewModel.getNewsByTopic("Tesla","publishedAt",getCurrentDate())
     }
 }
