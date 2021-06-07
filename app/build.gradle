@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 apply plugin: 'kotlin-android-extensions'
 
@@ -34,7 +35,8 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding = true
+        dataBinding true
+        viewBinding true
     }
 
 }
